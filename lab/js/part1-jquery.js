@@ -179,35 +179,58 @@ var array= function(data){
 };
 
 $(document).ready(function() {
-  $("label#text-label1").text("Name");
-  $("label#text-label2").text("Address 1");
-  $("label#text-label3").text("Address 2");
-  $("label#number-label").text("Zip-Code");
-  $("label#checkbox-label1").text("Works in Philadelphia");
-  $("label#checkbox-label2").text("Works somewhere else");
-  $("label#color-label").text("Pick color");
+  $("#text-label1").text("Name");
+  $("#text-label2").text("Address 1");
+  $("#text-label3").text("Address 2");
+  $("#number-label").text("Zip-Code");
+  $("#checkbox-label1").text("Works in Philadelphia");
+  $("#checkbox-label2").text("Works somewhere else");
+  $("#color-label").text("Pick color");
+  $("#lat").text("latitude");
+  $("#long").text("longitude");
+  $("#Description").text("Description");
+
+
+
+
   $("#text-input1").val("John");
   $("#text-input2").val("4412 Spruce");
   $("#text-input3").val("Apartment 3");
   $("#numeric-input").val("19104");
   $("#cbox-input1").prop("checked",true);
   $("#cbox-input2").prop("checked",false);
-
+  $("#latitude1").val("39.9522");
+  $("#longitude1").val("-75.1639");
+  $("#description1").val("Marker1");
 
   // Do your stuff here
 
 // Task 3
 var createaLabels={
-  label1:$("label#text-label1").text(),
-  label2:$("label#text-label2").text(),
-  label3:$("label#text-label3").text(),
-  label4:$("label#number-label").text()};
+  label1:$("#text-label1").text(),
+  label2:$("#text-label2").text(),
+  label3:$("#text-label3").text(),
+  label4:$("#number-label").text(),
+  label5:$("#checkbox-label1").text(),
+  label6:$("#checkbox-label2").text(),
+  label7:$("#color-label").text(),
+  label8:$("#lat").text(),
+  label9:$("#long").text(),
+  label10:$("#Description").text()
+};
 
 var createValues ={
   value1:$("#text-input1").val(),
   value2:$("#text-input2").val(),
   value3:$("#text-input3").val(),
-  value4:$("#numeric-input").val()};
+  value4:$("#numeric-input").val(),
+  value5:$("#cbox-input1")[0].checked,
+  value6:$("#cbox-input2")[0].checked,
+  value7:$("#color-input").val(),
+  value8:$("#latitude1").val(),
+  value9:$("#longitude1").val(),
+  value10:$("#description1").val()
+};
 
 var createLabels1=_.values(createaLabels);
 var createValues1=_.values(createValues);
@@ -219,7 +242,9 @@ $("#text-input3").prop('disabled', false);
 $("#numeric-input").prop('disabled', false);
 $("#cbox-input1").prop('disabled', false);
 $("#cbox-input2").prop('disabled', false);
-
+$("#latitude1").prop('disabled', false);
+$("#longitude1").prop('disabled', false);
+$("#description1").prop('disabled', false);
 
 /* =====================
 // Task 5: Add a button trigger to log this form's object to console
@@ -236,26 +261,41 @@ $("#cbox-input2").prop('disabled', false);
 
 $("button").click(function(){
   var createaLabels={
-    label1:$("label#text-label1").text(),
-    label2:$("label#text-label2").text(),
-    label3:$("label#text-label3").text(),
-    label4:$("label#number-label").text(),
-    label5:$("label#checkbox-label1").text(),
-    label6:$("label#checkbox-label2").text(),
-    label7:$("label#color-label").text()};
+    label1:$("#text-label1").text(),
+    label2:$("#text-label2").text(),
+    label3:$("#text-label3").text(),
+    label4:$("#number-label").text(),
+    label5:$("#checkbox-label1").text(),
+    label6:$("#checkbox-label2").text(),
+    label7:$("#color-label").text(),
+    label8:$("#lat").text(),
+    label9:$("#long").text(),
+    label10:$("#Description").text()
+  };
 
   var createValues ={
     value1:$("#text-input1").val(),
     value2:$("#text-input2").val(),
     value3:$("#text-input3").val(),
     value4:$("#numeric-input").val(),
-    value5:$("#cbox-input1").prop("checked",true),
-    value6:$("#cbox-input2").prop("checked",false)
+    value5:$("#cbox-input1")[0].checked,
+    value6:$("#cbox-input2")[0].checked,
+    value7:$("#color-input").val(),
+    value8:$("#latitude1").val(),
+    value9:$("#longitude1").val(),
+    value10:$("#description1").val()
   };
+
+
+
+
 
   var createLabels1=_.values(createaLabels);
   var createValues1=_.values(createValues);
   var createObject=_.object(createLabels1,createValues1);
+  L.circleMarker([$("#latitude1").val(),$("#longitude1").val()], {fillColor:$("#color-input").val()}).addTo(map);
+
+
   console.log(createObject);
 });
 
