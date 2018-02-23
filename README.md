@@ -32,3 +32,5 @@
 
 - Complete the [Lab](lab)
 - Complete [Assignment](assignment)
+
+# Notes

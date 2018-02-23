@@ -80,6 +80,7 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
     *NOTE*: Do not edit part1-jquery.html. You should be able to change the text of an HTML element
             with jQuery alone! Try this: $(<selector>).text('text to set');
 
+
     Let's change the labels of our input elements so that they're meaningful. We don't want the
     page to say 'This is the first text input'. Instead we should imagine useful inputs and label
     accordingly. Be sure that the labels you choose make sense for the element types provided. A
@@ -170,6 +171,94 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
 // This is a popular pattern that you'll run into in programs that run jQuery. It says not to run
 // the function passed to `ready` until the HTML document is fully loaded and all scripts have
 // been interpreted. It is, therefore, an example of asynchronous behavior.
+
+
+
+// define function outside and then just call it inside $(document... loop
+var array= function(data){
+};
+
 $(document).ready(function() {
+  $("label#text-label1").text("Name");
+  $("label#text-label2").text("Address 1");
+  $("label#text-label3").text("Address 2");
+  $("label#number-label").text("Zip-Code");
+  $("label#checkbox-label1").text("Works in Philadelphia");
+  $("label#checkbox-label2").text("Works somewhere else");
+  $("label#color-label").text("Pick color");
+  $("#text-input1").val("John");
+  $("#text-input2").val("4412 Spruce");
+  $("#text-input3").val("Apartment 3");
+  $("#numeric-input").val("19104");
+  $("#cbox-input1").prop("checked",true);
+  $("#cbox-input2").prop("checked",false);
+
+
   // Do your stuff here
+
+// Task 3
+var createaLabels={
+  label1:$("label#text-label1").text(),
+  label2:$("label#text-label2").text(),
+  label3:$("label#text-label3").text(),
+  label4:$("label#number-label").text()};
+
+var createValues ={
+  value1:$("#text-input1").val(),
+  value2:$("#text-input2").val(),
+  value3:$("#text-input3").val(),
+  value4:$("#numeric-input").val()};
+
+var createLabels1=_.values(createaLabels);
+var createValues1=_.values(createValues);
+var createObject=_.object(createLabels1,createValues1);
+
+$("#text-input1").prop('disabled', false);
+$("#text-input2").prop('disabled', false);
+$("#text-input3").prop('disabled', false);
+$("#numeric-input").prop('disabled', false);
+$("#cbox-input1").prop('disabled', false);
+$("#cbox-input2").prop('disabled', false);
+
+
+/* =====================
+// Task 5: Add a button trigger to log this form's object to console
+    We now can enter data through the HTML and create an object to represent that data. Add a button
+    click event to the button at the bottom of your form. This means that we want to use jQuery to
+    bind your input-reading function (what you did in task 3) to the button's 'click' event.
+    Here's the documentation for click: https://api.jquery.com/click/
+
+    Keep in mind that events are asynchronous, just like ajax. The function you bind is not called
+    until the event on which it is bound is triggered.
+
+    P.S. Checkboxes might confuse you. Try to use google to figure out what's going wrong.
+===================== */
+
+$("button").click(function(){
+  var createaLabels={
+    label1:$("label#text-label1").text(),
+    label2:$("label#text-label2").text(),
+    label3:$("label#text-label3").text(),
+    label4:$("label#number-label").text(),
+    label5:$("label#checkbox-label1").text(),
+    label6:$("label#checkbox-label2").text(),
+    label7:$("label#color-label").text()};
+
+  var createValues ={
+    value1:$("#text-input1").val(),
+    value2:$("#text-input2").val(),
+    value3:$("#text-input3").val(),
+    value4:$("#numeric-input").val(),
+    value5:$("#cbox-input1").prop("checked",true),
+    value6:$("#cbox-input2").prop("checked",false)
+  };
+
+  var createLabels1=_.values(createaLabels);
+  var createValues1=_.values(createValues);
+  var createObject=_.object(createLabels1,createValues1);
+  console.log(createObject);
+});
+
+
+
 });
