@@ -175,8 +175,7 @@ var Stamen_TonerLite = L.tileLayer('http://stamen-tiles-{s}.a.ssl.fastly.net/ton
 
 
 // define function outside and then just call it inside $(document... loop
-var array= function(data){
-};
+
 
 $(document).ready(function() {
   $("#text-label1").text("Name");
